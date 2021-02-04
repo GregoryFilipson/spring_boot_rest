@@ -1,16 +1,22 @@
 package com.example.demo;
 
-import java.util.ArrayList;
+import org.springframework.stereotype.Repository;
+
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
+@Repository
 public class UserRepository {
-    public List<Authorities> getUserAuthorities(String userName, String password, Authorities authorities) {
+    HashMap<User, List<Authorities>> map = new HashMap<>();
+
+    public List<Authorities> getUserAuthorities(String userName, String password) {
         User user = new User(userName, password);
-        HashMap<User, Authorities> map = new HashMap<>();
-        map.put(user, authorities);
-        List<Authorities> list = new ArrayList<>();
-        list.add(map.get(user));
-        return list;
+        return map.get(user);
+    }
+
+    public UserRepository() {
+        User user = new User("Петя", "123");
+        map.put(user, Arrays.asList(Authorities.READ, Authorities.WRITE));
     }
 }
