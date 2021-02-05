@@ -1,12 +1,11 @@
 package com.example.demo;
 
 
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Component
+
 @Service
 public class AuthorizationService {
     private final UserRepository userRepository;
